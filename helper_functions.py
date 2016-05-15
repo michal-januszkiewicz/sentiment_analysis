@@ -6,6 +6,14 @@ from nltk.corpus import stopwords
 
 
 ###############################################################################
+# Split a list in two.
+###############################################################################
+def split_list_in_half(a_list):
+  half = int(len(a_list)/2)
+  return a_list[:half], a_list[half:]
+
+
+###############################################################################
 # Extract only meaningful words from review text.
 ###############################################################################
 def review_to_words(text):
