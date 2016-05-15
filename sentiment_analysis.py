@@ -1,6 +1,8 @@
 import nltk
 
 from helper_functions import *
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.ensemble import RandomForestClassifier
 
 
 ###############################################################################
@@ -16,6 +18,24 @@ def main():
   # Split reviews and ratings into training and test data.
   reviews, test_reviews = split_list_in_half(reviews)
   ratings, test_ratings = split_list_in_half(ratings)
+
+  # Limit vocabulary size to 5000.
+  vectorizer = CountVectorizer(
+      analyzer = "word",   
+      tokenizer = None,    
+      preprocessor = None, 
+      stop_words = None,   
+      max_features = 5000
+  )
+
+  train_data_features = vectorizer.fit_transform(reviews)
+  train_data_features = train_data_features.toarray()
+
+  # Initialize a random forest classifier.
+  forest = RandomForestClassifier(n_estimators = 100)
+
+  # Train classifier.
+  forest = forest.fit(train_data_features, ratings)
 
 
 main()
