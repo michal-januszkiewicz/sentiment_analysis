@@ -1,10 +1,14 @@
-import json
-import gzip
+import nltk
 
-def parse(path):
-  g = gzip.open(path, 'r')
-  for l in g:
-    eval(l)
+from helper_functions import *
 
-path = "/home/michal/amazon_data_sets/reviews_Apps_for_Android.json.gz"
-parse(path)
+
+###############################################################################
+# Main function.
+###############################################################################
+def main():
+
+  path = "output.gz"
+
+
+main()
