@@ -3,7 +3,7 @@
 1. Install nltk 
 
 ```bash
-    sudo apt-get install python3-nltk
+sudo apt-get install python3-nltk
 ```
  
 2. Install sklearn (for Ubuntu: 
@@ -14,7 +14,7 @@
 
 3. Put this line in the program to run the installer:
 ```python
-    nltk.download()
+nltk.download()
 ```
-   Remove the line after installation.
+  Remove the line after installation.  
 
