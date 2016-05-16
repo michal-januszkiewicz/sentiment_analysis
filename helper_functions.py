@@ -6,11 +6,13 @@ from nltk.corpus import stopwords
 
 
 ###############################################################################
-# Split a list in two.
+# Split a list in two lists.
 ###############################################################################
-def split_list_in_half(a_list):
-  half = int(len(a_list)/2)
-  return a_list[:half], a_list[half:]
+def split_list_in_two(a_list, test_partition):
+
+  test_partition = (100 - test_partition) / 100
+  boundary = int(len(a_list) * test_partition)
+  return a_list[:boundary], a_list[boundary:]
 
 
 ###############################################################################

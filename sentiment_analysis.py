@@ -17,9 +17,15 @@ def main():
   print('Extracting data...')
   reviews, ratings = extract_reviews_and_rating(path)
 
+  # Size of test data partition in percents.
+  test_partition = 20
+
   # Split reviews and ratings into training and test data.
-  reviews, test_reviews = split_list_in_half(reviews)
-  ratings, test_ratings = split_list_in_half(ratings)
+  reviews, test_reviews = split_list_in_two(reviews, test_partition)
+  ratings, test_ratings = split_list_in_two(ratings, test_partition)
+
+  print('Train reviews: ' + str(len(reviews)))
+  print('Test reviews: ' + str(len(test_reviews)))
 
   # Limit vocabulary size to 5000.
   vectorizer = CountVectorizer(
