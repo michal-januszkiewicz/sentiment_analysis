@@ -1,18 +1,9 @@
 import nltk
 import gzip
 import re
+import numpy as np
 
 from nltk.corpus import stopwords
-
-
-###############################################################################
-# Split a list in two lists.
-###############################################################################
-def split_list_in_two(a_list, test_partition):
-
-  test_partition = (100 - test_partition) / 100
-  boundary = int(len(a_list) * test_partition)
-  return a_list[:boundary], a_list[boundary:]
 
 
 ###############################################################################
@@ -56,6 +47,10 @@ def extract_reviews_and_rating(path):
     reviews.append(words)
     rating = convert_rating_to_sentiment(review['overall'])
     ratings.append(rating)
+
+  # Convert python lists to numpy arrays.
+  ratings = np.array(ratings)
+  reviews = np.array(reviews)
 
   return reviews, ratings
 

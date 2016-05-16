@@ -1,9 +1,11 @@
 import nltk
+import numpy as np
 
 from helper_functions import *
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from sklearn import cross_validation
 
 
 ###############################################################################
@@ -17,16 +19,6 @@ def main():
   print('Extracting data...')
   reviews, ratings = extract_reviews_and_rating(path)
 
-  # Size of test data partition in percents.
-  test_partition = 20
-
-  # Split reviews and ratings into training and test data.
-  reviews, test_reviews = split_list_in_two(reviews, test_partition)
-  ratings, test_ratings = split_list_in_two(ratings, test_partition)
-
-  print('Train reviews: ' + str(len(reviews)))
-  print('Test reviews: ' + str(len(test_reviews)))
-
   # Limit vocabulary size to 5000.
   vectorizer = CountVectorizer(
       analyzer = "word",   
@@ -36,24 +28,45 @@ def main():
       max_features = 5000
   )
 
-  train_data_features = vectorizer.fit_transform(reviews)
-  train_data_features = train_data_features.toarray()
-
   # Initialize a random forest classifier.
   forest = RandomForestClassifier(n_estimators = 100)
 
-  # Train classifier.
-  print('Training classifier...')
-  forest = forest.fit(train_data_features, ratings)
+  # Create bag of words features.
+  train_data_features = vectorizer.fit_transform(reviews)
+  train_data_features = train_data_features.toarray()
 
-  test_data_features = vectorizer.transform(test_reviews)
+  # Create bag of words features.
+  test_data_features = vectorizer.transform(reviews)
   test_data_features = test_data_features.toarray()
 
-  # Use trained classifier to predict sentiment of test data.
-  print('Processing test data...')
-  result = forest.predict(test_data_features)
+  # Prepare train and test indices for tenfold cross validation.
+  kf = cross_validation.KFold(len(reviews), n_folds = 10)
+  sum_accuracy = 0
 
-  print('Accuracy: ' + str(accuracy_score(test_ratings, result)))
+  # Tenfold cross validation loop.
+  for train, test in kf:
 
+    # Convert python lists to numpy arrays.
+    train = np.array(train)
+    test = np.array(test)
+
+    # Train classifier.
+    print('Training classifier...')
+    forest = forest.fit(train_data_features[train], ratings[train])
+
+    # Use trained classifier to predict sentiment of test data.
+    print('Processing test data...')
+    result = forest.predict(test_data_features[test])
+
+    # Calculate prediction accuracy.
+    accuracy = accuracy_score(ratings[test], result)
+    print('Accuracy: ' + str(accuracy) + '\n')
+    
+    # Sum each score to calculate average.
+    sum_accuracy += accuracy
+
+
+  # Display average accuracy for tenfold cross validation.
+  print('Average accuracy: ' + str(sum_accuracy / 10))
 
 main()
