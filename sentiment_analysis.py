@@ -3,6 +3,7 @@ import nltk
 from helper_functions import *
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 
 
 ###############################################################################
@@ -43,7 +44,7 @@ def main():
   # Use trained classifier to predict sentiment of test data.
   result = forest.predict(test_data_features)
 
-  print(result)
+  print(accuracy_score(test_ratings, result))
 
 
 main()
