@@ -14,6 +14,7 @@ def main():
   path = "output.gz"
 
   # Get only text reviews and star ratings from entire data set.
+  print('Extracting data...')
   reviews, ratings = extract_reviews_and_rating(path)
 
   # Split reviews and ratings into training and test data.
@@ -36,15 +37,17 @@ def main():
   forest = RandomForestClassifier(n_estimators = 100)
 
   # Train classifier.
+  print('Training classifier...')
   forest = forest.fit(train_data_features, ratings)
 
   test_data_features = vectorizer.transform(test_reviews)
   test_data_features = test_data_features.toarray()
 
   # Use trained classifier to predict sentiment of test data.
+  print('Processing test data...')
   result = forest.predict(test_data_features)
 
-  print(accuracy_score(test_ratings, result))
+  print('Accuracy: ' + str(accuracy_score(test_ratings, result)))
 
 
 main()
