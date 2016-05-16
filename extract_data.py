@@ -9,6 +9,7 @@ quantity		= int(sys.argv[3])
 i = 0
 f = gzip.open(output_path + '.gz', 'w')
 g = gzip.open(input_path, 'r')
+
 for l in g:
 	line = json.dumps(eval(l))
 	f.write(bytes(line + '\n', 'UTF-8'))
@@ -16,4 +17,6 @@ for l in g:
 	if i == quantity:
 		f.close()
 		exit()
+
+f.close()
 
