@@ -52,6 +52,26 @@ def extract_reviews_and_rating(path):
     words = review_to_words(review['reviewText'])
 
     reviews.append(words)
-    ratings.append(review['overall'])
+    rating = convert_rating_to_sentiment(review['overall'])
+    ratings.append(rating)
 
   return reviews, ratings
+
+
+###############################################################################
+# Convert star rating to sentiment number. 
+# 1,2 stars -> 0 - negative
+# 3 stars   -> 1 - neutral
+# 4,5 stars -> 2 - positive
+###############################################################################
+def convert_rating_to_sentiment(rating):
+
+  switcher = {
+      1.0: 0,
+      2.0: 0,
+      3.0: 1,
+      4.0: 2,
+      5.0: 2,
+  }
+
+  return switcher.get(rating, "nothing")
