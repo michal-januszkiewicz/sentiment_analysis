@@ -37,5 +37,13 @@ def main():
   # Train classifier.
   forest = forest.fit(train_data_features, ratings)
 
+  test_data_features = vectorizer.transform(test_reviews)
+  test_data_features = test_data_features.toarray()
+
+  # Use trained classifier to predict sentiment of test data.
+  result = forest.predict(test_data_features)
+
+  print(result)
+
 
 main()
