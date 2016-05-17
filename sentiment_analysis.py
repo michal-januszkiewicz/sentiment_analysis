@@ -6,6 +6,7 @@ from helper_functions import *
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 from sklearn import cross_validation
 
 
@@ -78,6 +79,8 @@ def main():
 
 
   # Display average accuracy for tenfold cross validation.
-  print('Average accuracy: ' + str(sum_accuracy / 10))
+  print('Average accuracy: ' + str(sum_accuracy / 10) + '\n')
+  print('Confusion matrix:')
+  print(confusion_matrix(ratings[test], result))
 
 main()
