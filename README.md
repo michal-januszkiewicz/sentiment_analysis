@@ -16,6 +16,7 @@ sudo pip3 install scikit-learn)
 ```python
 nltk.download()
 ```
-	And download stopwords.
+	
+  And download stopwords.
   Remove the line after installation.  
 
