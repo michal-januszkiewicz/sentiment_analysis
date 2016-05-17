@@ -1,4 +1,5 @@
 import nltk
+import sys
 import numpy as np
 
 from helper_functions import *
@@ -13,6 +14,12 @@ from sklearn import cross_validation
 ###############################################################################
 def main():
 
+  # Read console parameters.
+  n_estimators = int(sys.argv[1])
+  max_depth    = int(sys.argv[2])
+  max_features = int(sys.argv[3])
+
+  # Set path to a dataset.
   path = "output.gz"
 
   # Get only text reviews and star ratings from entire data set.
@@ -29,7 +36,11 @@ def main():
   )
 
   # Initialize a random forest classifier.
-  forest = RandomForestClassifier(n_estimators = 100, max_depth = 1, max_features = 100)
+  forest = RandomForestClassifier(
+      n_estimators = n_estimators, 
+      max_depth = max_depth,
+      max_features = max_features
+  )
 
   # Create bag of words features.
   train_data_features = vectorizer.fit_transform(reviews)
