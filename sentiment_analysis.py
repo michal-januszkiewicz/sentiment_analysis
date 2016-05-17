@@ -29,7 +29,7 @@ def main():
   )
 
   # Initialize a random forest classifier.
-  forest = RandomForestClassifier(n_estimators = 100)
+  forest = RandomForestClassifier(n_estimators = 100, max_depth = 1, max_features = 100)
 
   # Create bag of words features.
   train_data_features = vectorizer.fit_transform(reviews)
