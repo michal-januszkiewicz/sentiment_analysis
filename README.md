@@ -6,10 +6,10 @@
 sudo apt-get install python3-nltk
 ```
  
-2. Install sklearn (for Ubuntu: 
+2. Install sklearn
 ```bash  
 sudo apt-get install build-essential python3-dev python3-setuptools python3-numpy python3-scipy libatlas-dev libatlas3gf-base python3-pip
-sudo pip3 install scikit-learn)
+sudo pip3 install scikit-learn
 ```
 
 3. Put this line in the program to run the installer:
