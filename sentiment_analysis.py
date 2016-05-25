@@ -16,9 +16,10 @@ from sklearn import cross_validation
 def main():
 
   # Read console parameters.
-  n_estimators = int(sys.argv[1])
-  max_depth    = int(sys.argv[2])
-  max_features = int(sys.argv[3])
+  n_estimators            = int(sys.argv[1])
+  max_depth               = int(sys.argv[2])
+  max_features            = int(sys.argv[3])
+  vectorizer_max_features = int(sys.argv[4])
 
   # Set path to a dataset.
   path = "output.gz"
@@ -33,7 +34,7 @@ def main():
       tokenizer = None,    
       preprocessor = None, 
       stop_words = None,   
-      max_features = 5000
+      max_features = vectorizer_max_features
   )
 
   # Initialize a random forest classifier.
