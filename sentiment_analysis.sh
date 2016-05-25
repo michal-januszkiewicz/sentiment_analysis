@@ -1,1 +1,1 @@
-python3 sentiment_analysis.py 100 10 10 5000
+python3 sentiment_analysis.py 100 10 10 5000 True

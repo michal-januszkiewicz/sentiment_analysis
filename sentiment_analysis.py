@@ -20,13 +20,14 @@ def main():
   max_depth               = int(sys.argv[2])
   max_features            = int(sys.argv[3])
   vectorizer_max_features = int(sys.argv[4])
+  neutral_sentiment       = bool(sys.argv[5])
 
   # Set path to a dataset.
   path = "output.gz"
 
   # Get only text reviews and star ratings from entire data set.
   print('Extracting data...')
-  reviews, ratings = extract_reviews_and_rating(path)
+  reviews, ratings = extract_reviews_and_rating(path, neutral_sentiment)
 
   # Limit vocabulary size to 5000.
   vectorizer = CountVectorizer(
