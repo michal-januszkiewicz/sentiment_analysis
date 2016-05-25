@@ -1,4 +1,5 @@
 from sentiment_analysis import *
+import timeit
 import csv
 
 n_estimators_array            = [100, 1000]
@@ -12,7 +13,7 @@ with open('results.csv', 'w', newline='') as csvfile:
   writer = csv.writer(csvfile, delimiter=' ',
               quotechar='|', quoting=csv.QUOTE_MINIMAL)
   writer.writerow(['n_estimators'] + ['max_depth'] + ['max_features'] 
-      + ['vocabulary_size'] + ['neutral_sentiment'] + ['accuracy'])
+      + ['vocabulary_size'] + ['neutral_sentiment'] + ['time[s]'] + ['accuracy'])
 
   # Loop through all paramters.
   for n_estimators in n_estimators_array:
@@ -23,12 +24,15 @@ with open('results.csv', 'w', newline='') as csvfile:
           for neutral_sentiment in neutral_sentiment_array:
 
             # Run the algorithm for specific parameters.
+            start = timeit.default_timer()
             accuracy = calculate(n_estimators, max_depth, max_features, 
                 vectorizer_max_features, neutral_sentiment)
+            stop = timeit.default_timer()
+            time = stop - start
 
             # Write the parameters and results to the csv file.
             writer.writerow([n_estimators] + [max_depth] + [max_features] 
-                + [vectorizer_max_features] + [int(neutral_sentiment)] + [accuracy])
+                + [vectorizer_max_features] + [int(neutral_sentiment)] + [time] + [accuracy])
 
 
 
