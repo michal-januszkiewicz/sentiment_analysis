@@ -83,6 +83,7 @@ def calculate(n_estimators = None, max_depth = None, max_features = None,
 
 
   # Display average accuracy for tenfold cross validation.
-  print('Average accuracy: ' + str(sum_accuracy / 10) + '\n')
-  return result
+  accuracy = sum_accuracy / 10
+  print('Average accuracy: ' + str(accuracy) + '\n')
+  return accuracy
 
