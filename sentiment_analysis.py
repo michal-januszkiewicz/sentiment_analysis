@@ -82,7 +82,5 @@ def main():
 
   # Display average accuracy for tenfold cross validation.
   print('Average accuracy: ' + str(sum_accuracy / 10) + '\n')
-  print('Confusion matrix:')
-  print(confusion_matrix(ratings[test], result))
 
 main()
