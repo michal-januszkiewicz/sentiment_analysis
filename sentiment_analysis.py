@@ -11,16 +11,18 @@ from sklearn import cross_validation
 
 
 ###############################################################################
-# Main function.
+# Main calculations function.
 ###############################################################################
-def main():
+def calculate(n_estimators = None, max_depth = None, max_features = None, 
+    vectorizer_max_features = None, neutral_sentiment = None):
 
-  # Read console parameters.
-  n_estimators            = int(sys.argv[1])
-  max_depth               = int(sys.argv[2])
-  max_features            = int(sys.argv[3])
-  vectorizer_max_features = int(sys.argv[4])
-  neutral_sentiment       = bool(sys.argv[5])
+  # Read console parameters if function is not called from python.
+  if (n_estimators is None):
+    n_estimators            = int(sys.argv[1])
+    max_depth               = int(sys.argv[2])
+    max_features            = int(sys.argv[3])
+    vectorizer_max_features = int(sys.argv[4])
+    neutral_sentiment       = bool(sys.argv[5])
 
   # Set path to a dataset.
   path = "output.gz"
@@ -82,5 +84,5 @@ def main():
 
   # Display average accuracy for tenfold cross validation.
   print('Average accuracy: ' + str(sum_accuracy / 10) + '\n')
+  return result
 
-main()
