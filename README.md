@@ -5,8 +5,8 @@ The program uses amazon review data sets which can be downloaded from
 ```
 http://jmcauley.ucsd.edu/data/amazon/
 ```
-> Image-based recommendations on styles and substitutes 
-> J. McAuley, C. Targett, J. Shi, A. van den Hengel 
+> Image-based recommendations on styles and substitutes  
+> J. McAuley, C. Targett, J. Shi, A. van den Hengel  
 > SIGIR, 2015
 
 Possibly other data sets could be used as well provided they have the same structure, are compressed with gzip and contain fields:  `reviewText` and `overall`.
@@ -53,7 +53,7 @@ Right now the application can use only a dataset that is in the same directory a
 **Always make sure you pass all parameters.**
 
 1. Run from bash  
-  You can find example usage in `run.sh` file.
+  You can find example usage in `run.sh` file.  
   Remember to include all of the parameters:
   1. Number of estimators (integer)
   2. Maximal depth (integer)
