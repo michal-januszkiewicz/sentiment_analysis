@@ -5,9 +5,11 @@ The program uses amazon review data sets which can be downloaded from
 ```
 http://jmcauley.ucsd.edu/data/amazon/
 ```
-> Image-based recommendations on styles and substitutes J. McAuley, C. Targett, J. Shi, A. van den Hengel SIGIR, 2015
+> Image-based recommendations on styles and substitutes 
+> J. McAuley, C. Targett, J. Shi, A. van den Hengel 
+> SIGIR, 2015
 
-Possibly other data sets could be used as well provided they have the same structure, are compressed with gzip and contain fields:  *reviewText* and *overall*.
+Possibly other data sets could be used as well provided they have the same structure, are compressed with gzip and contain fields:  `reviewText` and `overall`.
 
 
 ## Installation
@@ -30,27 +32,28 @@ Possibly other data sets could be used as well provided they have the same struc
   ```
   nltk.download()
   ```
-  And download stopwords.
+  And download stopwords.  
   **Remove the line after installation.** 
 
 
 ## Data preparation
 
-The data sets downloaded from the given link are very large. To shrink them down a little an additional program was written. Example of usage can be found in 'extract_data.sh' file. You can also modify it for your own use.
+The data sets downloaded from the given link are very large. To shrink them down a little an additional program was written. Example of usage can be found in `extract_data.sh` file. You can also modify it for your own use.
 The program needs following parameters:
-  1. Data set path
-  2. Output file name (note that '.gz' will be appended to it)
+  1. A data set path
+  2. Output file name (note that `.gz` will be appended to it automatically)
   3. Number of reviews you want to extract
 
 
 ## Usage
 
-The application('sentiment_analysis.py') can be run either with bash or with python.
+The application(`sentiment_analysis.py`) can be run either with bash or with python.
 
-Right now the application can use only a dataset that is in the same directory and is named: 'output.gz'
+Right now the application can use only a dataset that is in the same directory and is named: `output.gz`.  
+**Always make sure you pass all parameters.**
 
-1. Run from bash
-  You can find example usage in 'run.sh' file.
+1. Run from bash  
+  You can find example usage in `run.sh` file.
   Remember to include all of the parameters:
   1. Number of estimators (integer)
   2. Maximal depth (integer)
@@ -61,8 +64,8 @@ Right now the application can use only a dataset that is in the same directory a
   You can use this method to run the program just once or write a bash script to run it multiple times for different parameters.
 
 2. Run from python
-  This will involve running the 'main.py' file which will run 'sentiment_analysis.py' file multiple times with different parameters and save the results in a csv file.
-  Feel free to experiment with params arrays and loop orders inside the 'main.py' file.
+  This will involve running the `main.py` file which will run `sentiment_analysis.py` file multiple times with different parameters and save the results in a csv file.
+  Feel free to experiment with params arrays and loop orders inside the `main.py` file.
 
   To run it just use:
   ```
