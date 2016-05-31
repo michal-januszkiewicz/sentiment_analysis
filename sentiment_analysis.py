@@ -13,19 +13,17 @@ from sklearn import cross_validation
 ###############################################################################
 # Main calculations function.
 ###############################################################################
-def calculate(n_estimators = None, max_depth = None, max_features = None, 
+def calculate(path = None, n_estimators = None, max_depth = None, max_features = None, 
     vectorizer_max_features = None, neutral_sentiment = None):
 
   # Read console parameters if function is not called from python.
-  if (n_estimators is None):
-    n_estimators            = int(sys.argv[1])
-    max_depth               = int(sys.argv[2])
-    max_features            = int(sys.argv[3])
-    vectorizer_max_features = int(sys.argv[4])
-    neutral_sentiment       = bool(sys.argv[5])
-
-  # Set path to a dataset.
-  path = "output.gz"
+  if (path is None):
+    path                    = sys.argv[1]
+    n_estimators            = int(sys.argv[2])
+    max_depth               = int(sys.argv[3])
+    max_features            = int(sys.argv[4])
+    vectorizer_max_features = int(sys.argv[5])
+    neutral_sentiment       = bool(sys.argv[6])
 
   # Get only text reviews and star ratings from entire data set.
   print('Extracting data...')

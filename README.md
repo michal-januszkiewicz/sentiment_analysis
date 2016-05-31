@@ -49,17 +49,17 @@ The program needs following parameters:
 
 The application(`sentiment_analysis.py`) can be run either with bash or with python.
 
-Right now the application can use only a dataset that is in the same directory and is named: `output.gz`.  
 **Always make sure you pass all parameters.**
 
 1. Run from bash  
   You can find example usage in `run.sh` file.  
   Remember to include all of the parameters:
-  1. Number of estimators (integer)
-  2. Maximal depth (integer)
-  3. Maximal features (integer)
-  4. Vocabulary size (integer)
-  5. Include or exclude neutral sentiment (boolean)
+  1. Path to a dataset
+  2. Number of estimators (integer)
+  3. Maximal depth (integer)
+  4. Maximal features (integer)
+  5. Vocabulary size (integer)
+  6. Include or exclude neutral sentiment (boolean)
   
   You can use this method to run the program just once or write a bash script to run it multiple times for different parameters.
 
